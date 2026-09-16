@@ -9,6 +9,7 @@ import Timeline from "@/components/Timeline";
 import Letter from "@/components/Letter";
 import Cake from "@/components/Cake";
 import Wishes from "@/components/Wishes";
+import WorkExperience from "@/components/WorkExperience";
 import Footer from "@/components/Footer";
 import MusicToggle from "@/components/MusicToggle";
 
@@ -30,7 +31,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main>
+    <main className="pb-16 md:pb-0">
       <Nav />
       <Hero onCTAClick={handleCTA} />
       <Countdown />
@@ -38,6 +39,7 @@ export default function Home() {
       <Timeline />
       <Letter />
       <Cake />
+      <WorkExperience />
       <Wishes />
       <Footer />
       <MusicToggle started={musicStarted} />

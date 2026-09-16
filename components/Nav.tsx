@@ -28,72 +28,70 @@ export default function Nav() {
   };
 
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.nav
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.4 }}
-          className="fixed top-4 left-1/2 -translate-x-1/2 z-50"
-          aria-label="Site navigation"
-        >
-          {/* Desktop pill */}
-          <div
-            className="glass hidden md:flex items-center gap-1 px-4 py-2 rounded-full"
-            style={{ border: "1px solid var(--border)" }}
+    <>
+      {/* Desktop — top pill (unchanged) */}
+      <AnimatePresence>
+        {visible && (
+          <motion.nav
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+            className="fixed top-4 left-1/2 -translate-x-1/2 z-50 hidden md:block"
+            aria-label="Site navigation"
           >
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => handleLink(link.href)}
-                className="px-3 py-1.5 rounded-full text-sm font-medium transition-colors hover:text-[var(--accent)] focus-visible:outline-[var(--accent)]"
-                style={{ color: "var(--muted)" }}
-              >
-                {link.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Mobile pill */}
-          <div className="md:hidden relative">
-            <button
-              onClick={() => setOpen((o) => !o)}
-              className="glass flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium"
-              style={{ color: "var(--text)", border: "1px solid var(--border)" }}
-              aria-expanded={open}
-              aria-label="Open navigation"
+            <div
+              className="glass flex items-center gap-1 px-4 py-2 rounded-full"
+              style={{ border: "1px solid var(--border)", boxShadow: "var(--shadow)" }}
             >
-              <span style={{ color: "var(--accent)" }}>&#9670;</span>
-              Menu
-            </button>
-
-            <AnimatePresence>
-              {open && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                  transition={{ duration: 0.2 }}
-                  className="glass absolute top-full mt-2 left-1/2 -translate-x-1/2 rounded-2xl overflow-hidden min-w-[140px]"
-                  style={{ border: "1px solid var(--border)" }}
+              {navLinks.map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => handleLink(link.href)}
+                  className="px-3 py-1.5 rounded-full text-sm font-medium transition-colors hover:text-[var(--accent)] focus-visible:outline-[var(--accent)]"
+                  style={{ color: "var(--muted)" }}
                 >
-                  {navLinks.map((link) => (
-                    <button
-                      key={link.href}
-                      onClick={() => handleLink(link.href)}
-                      className="block w-full text-left px-5 py-3 text-sm font-medium transition-colors hover:text-[var(--accent)]"
-                      style={{ color: "var(--muted)" }}
-                    >
-                      {link.label}
-                    </button>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </motion.nav>
-      )}
-    </AnimatePresence>
+                  {link.label}
+                </button>
+              ))}
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+
+      {/* Mobile — fixed bottom bar (never overlaps content) */}
+      <AnimatePresence>
+        {visible && (
+          <motion.nav
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.4 }}
+            className="fixed bottom-0 inset-x-0 z-50 md:hidden"
+            aria-label="Site navigation"
+            style={{
+              background: "var(--glass)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+              borderTop: "1px solid var(--border)",
+              paddingBottom: "env(safe-area-inset-bottom)",
+            }}
+          >
+            <div className="flex items-center justify-around px-2 py-2">
+              {navLinks.map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => handleLink(link.href)}
+                  className="flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-xl text-xs font-medium transition-colors min-w-[44px] min-h-[44px] justify-center"
+                  style={{ color: "var(--muted)" }}
+                >
+                  {link.label}
+                </button>
+              ))}
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

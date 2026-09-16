@@ -1,14 +1,13 @@
 // ============================================================
-//  CONTENT CONFIG — edit everything here
-//  Every piece of visible text lives in this file.
+//  CONTENT CONFIG — all editable text lives here
 // ============================================================
 
-export const BIRTHDAY_DATE = new Date("2026-09-16T00:00:00"); // TODO: confirm exact date
+export const BIRTHDAY_DATE = new Date("2026-09-16T00:00:00");
 
 export const site = {
   name: "Burhanuddin",
   title: "Happy 23rd Birthday, Burhanuddin",
-  heroSubline: "Twenty-three years of laughter, loyalty, and living life loud.", // TODO: personalise
+  heroSubline: "From the streets of Lahore to the hearts of every student you've taught.",
   ctaLabel: "Open Your Surprise",
 
   // ── Countdown strip
@@ -18,79 +17,120 @@ export const site = {
   // ── Letter section
   letter: {
     greeting: "Dear Burhanuddin,",
-    // TODO: Write your personal letter below — replace the placeholder paragraphs
     body: [
-      "Twenty-three years ago, the world gained someone truly special — and those of us lucky enough to know you have been better for it ever since.",
-      "You have this rare gift: you walk into a room and somehow make everyone in it feel like they belong. Whether it is your laugh that gives everything away, the way you argue passionately about things you love, or that look you get when you are about to say something you will absolutely not regret — you are one of a kind.",
-      "Here is to the late nights, the bad jokes that landed perfectly, the adventures we planned and the ones that just happened. Here is to everything ahead of you — because if 23 feels this good, the rest is going to be something else entirely.",
-      "Bohat saal jiyo, Burhanuddin. Keep being exactly you.",
+      "Twenty-three years ago, on a September morning in Lahore, the world welcomed someone who would grow up to be far more than just a friend — a teacher, a leader, and one of the most hardworking people I've ever had the privilege to know.",
+      "You started as a student, and look at you now — standing at the front of classrooms, shaping young minds at City Science Academy, building things on the web that didn't exist before, and carrying yourself with a quiet confidence that makes the people around you want to be better too. That is not a small thing, Burhanuddin. That is everything.",
+      "I've watched you juggle studies at Superior University, teach at multiple institutions, step into a Principal's role before most people our age even have their first job, and still find time to master full-stack development — SQL, Laravel, JavaScript, all of it. You don't do things halfway. You never have.",
+      "Here is to 23. Here is to everything you've already built and everything that's still ahead. The students who remember your name years from now, the projects you haven't started yet, the version of you that's still becoming.",
+      "Bohat saal jiyo, yaar. You deserve every single good thing.",
     ],
     signoff: "With love,",
-    signature: "Aqib", // TODO: replace with your name
+    signature: "Aqib",
   },
 
-  // ── Timeline milestones — edit years, titles, and descriptions
+  // ── Timeline milestones
   timeline: [
     {
       year: "2003",
-      title: "The Beginning",
-      description: "TODO: Where were you born? Add the city and a fun detail about that year.", // TODO
+      title: "Born in Lahore",
+      description: "September 16, 2003 — Lahore, Pakistan. The city of gardens welcomed one of its finest.",
     },
     {
-      year: "2009",
-      title: "School Days",
-      description: "TODO: First school memory — the teacher you actually liked, the friend you made on day one.", // TODO
+      year: "2019",
+      title: "Matriculation",
+      description: "Graduated from Unique Group of Institutions (UGI). The foundation was set.",
     },
     {
-      year: "2014",
-      title: "Growing Up",
-      description: "TODO: A turning point — sports, a hobby, something you got serious about.", // TODO
-    },
-    {
-      year: "2018",
-      title: "The College Era",
-      description: "TODO: Which college? What was the best part? Who became a lifelong friend?", // TODO
+      year: "2021",
+      title: "University & First Job",
+      description: "Enrolled at Superior University Gold Campus — and wasted no time. Also joined City Science Academy as a Lecturer the same year.",
     },
     {
       year: "2022",
-      title: "New Chapters",
-      description: "TODO: A milestone — job, travel, achievement, or just a year that felt different.", // TODO
+      title: "Principal at 19",
+      description: "Became Principal at Pak Leads Academy (Jun 2022 – Jul 2023). Most people are still figuring out adulting. Burhanuddin was running a school.",
+    },
+    {
+      year: "2024",
+      title: "Full-Stack Developer",
+      description: "Completed Full-Stack Web Development at PNY Trainings — SQL, HTML, CSS, Bootstrap, JavaScript, PHP, and Laravel. The builder unlocked.",
     },
     {
       year: "2026",
       title: "23 & Unstoppable",
-      description: "TODO: Today. What's ahead for you this year? A dream you are chasing?", // TODO
+      description: "Lecturer at City Science Academy, final year at Superior University, and only just getting started. The best chapters are still ahead.",
     },
   ],
 
-  // ── Wishes wall — add as many cards as you like
+  // ── Work & Education (for the dedicated section)
+  workExperience: [
+    {
+      role: "Lecturer",
+      org: "City Science Academy",
+      period: "Aug 2021 – Present",
+      type: "work" as const,
+    },
+    {
+      role: "Principal",
+      org: "Pak Leads Academy",
+      period: "Jun 2022 – Jul 2023",
+      type: "work" as const,
+    },
+    {
+      role: "Lecturer",
+      org: "Ilmi City",
+      period: "Feb 2023 – Apr 2023",
+      type: "work" as const,
+    },
+    {
+      role: "BS Computer Science",
+      org: "Superior University Gold Campus",
+      period: "2021 – Present",
+      type: "edu" as const,
+    },
+    {
+      role: "Full-Stack Web Development",
+      org: "PNY Trainings",
+      period: "Class of 2024",
+      type: "edu" as const,
+    },
+    {
+      role: "Matriculation",
+      org: "Unique Group of Institutions (UGI)",
+      period: "Class of 2019",
+      type: "edu" as const,
+    },
+  ],
+
+  // ── Wishes wall
   wishes: [
     {
-      author: "Aqib", // TODO: replace with real names
-      text: "Happy birthday, bhai! You make every day more interesting. Here is to the best year yet. 🎂",
+      author: "Aqib Ejaz",
+      text: "Happy birthday, bhai! Watching you grow from a student to a teacher to a developer has been something else. Proud doesn't cover it. Here's to 23 more incredible years.",
     },
     {
-      author: "TODO: Friend 2",
-      text: "TODO: Write a short wish (1-2 sentences).",
+      author: "Muhammad Arslan",
+      text: "Yaar, you became a Principal before most of us figured out how to wake up on time. Happy birthday — you've always been the most driven person in the room.",
     },
     {
-      author: "TODO: Friend 3",
-      text: "TODO: Write a short wish.",
+      author: "Talha Amjad",
+      text: "From Lahore to Superior University to PNY to a full-stack dev — bhai you never stopped. Wishing you everything you deserve on your 23rd. Bohat saal jiyo!",
     },
     {
-      author: "TODO: Friend 4",
-      text: "TODO: Write a short wish.",
+      author: "A Fellow Teacher",
+      text: "The students who sit in your classroom are lucky. You bring energy, you bring heart, and you show up every single day. Happy birthday, ustaz!",
     },
     {
-      author: "TODO: Family Member",
-      text: "TODO: A wish from family.",
+      author: "Superior University Friends",
+      text: "To the guy who studies, teaches, and still manages to be the best company — happy birthday! May this year be as full as your schedule, but 10x more rewarding.",
     },
     {
-      author: "TODO: Friend 6",
-      text: "TODO: Write a short wish.",
+      author: "The Whole Squad",
+      text: "23 looks good on you, Burhanuddin. Lahore's own. Keep building, keep teaching, keep inspiring. We're all cheering for you!",
     },
   ],
 
   // ── Footer
-  madeBy: "Aqib", // TODO: your name
+  madeBy: "Aqib Ejaz",
+  madeByUrl: "https://aqibawan2003.vercel.app",
 };

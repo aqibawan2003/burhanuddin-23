@@ -14,10 +14,22 @@ export default function Footer() {
       <div className="max-w-xl mx-auto flex flex-col items-center gap-4">
         <p className="text-sm" style={{ color: "var(--muted)" }}>
           Made with{" "}
-          <span role="img" aria-label="love" style={{ color: "#e76f51" }}>
+          <span role="img" aria-label="love" style={{ color: "#c0392b" }}>
             ♥
           </span>{" "}
-          by {site.madeBy} &mdash; {new Date().getFullYear()}
+          for Burhanuddin &mdash; {new Date().getFullYear()}
+        </p>
+        <p className="text-sm" style={{ color: "var(--muted)" }}>
+          Developed by{" "}
+          <a
+            href={site.madeByUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold underline underline-offset-2 transition-colors hover:text-[var(--accent)]"
+            style={{ color: "var(--accent-2)" }}
+          >
+            {site.madeBy}
+          </a>
         </p>
         <button
           onClick={scrollTop}
