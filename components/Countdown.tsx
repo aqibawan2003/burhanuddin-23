@@ -33,8 +33,11 @@ export default function Countdown() {
       style={{ background: "var(--surface)", borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}
     >
       {time === null ? (
-        <p className="font-semibold text-sm md:text-base" style={{ color: "var(--accent)" }}>
-          🎉 {site.birthdayBand}
+        <p className="font-semibold text-sm md:text-base flex items-center gap-2" style={{ color: "var(--accent)" }}>
+          <span aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+          </span>
+          {site.birthdayBand}
         </p>
       ) : (
         <p className="text-sm md:text-base" style={{ color: "var(--muted)" }}>
