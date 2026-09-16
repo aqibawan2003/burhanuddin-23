@@ -10,7 +10,6 @@ import Letter from "@/components/Letter";
 import Cake from "@/components/Cake";
 import WorkExperience from "@/components/WorkExperience";
 import Wishes from "@/components/Wishes";
-import Guestbook from "@/components/Guestbook";
 import SectionDivider from "@/components/SectionDivider";
 import Footer from "@/components/Footer";
 import MusicToggle from "@/components/MusicToggle";
@@ -60,9 +59,6 @@ export default function Home() {
       <div className="section-warm">
         <Wishes />
       </div>
-
-      <SectionDivider />
-      <Guestbook />
 
       <SectionDivider />
       <Footer />
