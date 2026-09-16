@@ -20,12 +20,8 @@ export default function WorkExperience() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, delay: i * 0.08 }}
-      className="flex gap-4 p-5 rounded-2xl"
-      style={{
-        background: "var(--surface)",
-        border: "1px solid var(--border)",
-        boxShadow: "var(--shadow)",
-      }}
+      className="spotlight-card card-border-hover flex gap-4 p-5 rounded-2xl"
+      style={{ background: "var(--surface)" }}
     >
       <div
         className="mt-0.5 w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 text-lg"

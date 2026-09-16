@@ -12,6 +12,7 @@ import Wishes from "@/components/Wishes";
 import WorkExperience from "@/components/WorkExperience";
 import Footer from "@/components/Footer";
 import MusicToggle from "@/components/MusicToggle";
+import StickyCTA from "@/components/StickyCTA";
 
 export default function Home() {
   const [musicStarted, setMusicStarted] = useState(false);
@@ -43,6 +44,7 @@ export default function Home() {
       <Wishes />
       <Footer />
       <MusicToggle started={musicStarted} />
+      <StickyCTA onCTAClick={handleCTA} />
     </main>
   );
 }

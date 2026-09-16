@@ -146,14 +146,137 @@ body::before {
 }
 
 /* ============================================================
+   AURORA — animated shifting gradient background
+   ============================================================ */
+@keyframes aurora-drift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.aurora-bg {
+  background: linear-gradient(
+    -45deg,
+    #fdfbf7,
+    #fef9ed,
+    #fff4d6,
+    #fdfbf7,
+    #f9f0e0
+  );
+  background-size: 400% 400%;
+  animation: aurora-drift 14s ease infinite;
+}
+
+/* ============================================================
+   SHIMMER — moving light sweep on text / borders
+   ============================================================ */
+@keyframes shimmer-slide {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.shimmer-eyebrow {
+  background: linear-gradient(
+    90deg,
+    #c8973a 0%,
+    #d4af37 30%,
+    #fde68a 50%,
+    #d4af37 70%,
+    #c8973a 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer-slide 4s linear infinite;
+}
+
+/* Shimmer sweep on btn or card border */
+@keyframes border-shimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ============================================================
+   GLOW PULSE — for primary CTA button
+   ============================================================ */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 18px rgba(212, 175, 55, 0.45),
+      0 0 36px rgba(212, 175, 55, 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 28px rgba(212, 175, 55, 0.7),
+      0 0 56px rgba(212, 175, 55, 0.35),
+      0 0 80px rgba(212, 175, 55, 0.15);
+  }
+}
+
+.btn-glow {
+  animation: glow-pulse 2.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   SPOTLIGHT CARD — radial glow reveals on hover
+   ============================================================ */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% -10%,
+    rgba(212, 175, 55, 0.13) 0%,
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+.spotlight-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
    CARD HOVER EFFECTS
    ============================================================ */
 .card-hover {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.11), 0 0 0 1px rgba(212,175,55,0.2);
+}
+
+/* Animated gradient border on hover */
+.card-border-hover {
+  background-clip: padding-box;
+  border: 1px solid transparent;
+  background-image: linear-gradient(white, white),
+    linear-gradient(135deg, rgba(212,175,55,0.6), rgba(200,151,58,0.3), rgba(212,175,55,0.6));
+  background-origin: border-box;
+  background-size: 200% auto;
+  transition: background-position 0.5s ease, box-shadow 0.3s ease, transform 0.25s ease;
+}
+
+.card-border-hover:hover {
+  background-position: right center;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1), 0 0 20px rgba(212,175,55,0.15);
   transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
 }
 
 /* ============================================================

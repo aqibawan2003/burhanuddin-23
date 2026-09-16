@@ -18,10 +18,7 @@ export default function SectionHeading({ eyebrow, title, className = "" }: Props
       className={`text-center mb-12 md:mb-16 ${className}`}
     >
       {eyebrow && (
-        <p
-          className="text-sm font-semibold uppercase tracking-[0.2em] mb-3"
-          style={{ color: "var(--accent)" }}
-        >
+        <p className="text-sm font-semibold uppercase tracking-[0.2em] mb-3 shimmer-eyebrow">
           {eyebrow}
         </p>
       )}
