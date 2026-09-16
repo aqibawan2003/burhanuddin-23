@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Gift, ChevronDown } from "lucide-react";
 import { photos } from "@/content/photos";
 
@@ -11,8 +11,12 @@ interface Props {
 }
 
 export default function Hero({ onCTAClick }: Props) {
-  // Particles — rendered on the desktop left panel only
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const photoColRef = useRef<HTMLDivElement>(null);
+
+  // Parallax: photo drifts up slightly as page scrolls
+  const { scrollY } = useScroll();
+  const photoY = useTransform(scrollY, [0, 600], [0, -70]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -170,16 +174,11 @@ export default function Hero({ onCTAClick }: Props) {
         style={{ minHeight: "100dvh" }}
       >
         {/* Left column — aurora animated panel */}
-        <div className="aurora-bg relative flex flex-col justify-center px-12 lg:px-20 py-16">
-          {/* Extra warm radial accent */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(ellipse 80% 70% at 15% 65%, rgba(212,175,55,0.1) 0%, transparent 65%)",
-            }}
-            aria-hidden="true"
-          />
+        <div className="aurora-bg relative flex flex-col justify-center px-12 lg:px-20 py-16 overflow-hidden">
+          {/* Aurora colour orbs */}
+          <div className="orb orb-a" aria-hidden="true" />
+          <div className="orb orb-b" aria-hidden="true" />
+          <div className="orb orb-c" aria-hidden="true" />
 
           {/* Floating gold particles */}
           <canvas
@@ -198,18 +197,15 @@ export default function Hero({ onCTAClick }: Props) {
               September 16, 2026
             </motion.p>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display font-black leading-[1.06] text-[clamp(2.8rem,4.5vw,5rem)]"
-              style={{ color: "var(--text)" }}
+            <h1
+              className="blur-reveal font-display font-bold leading-[1.06] text-[clamp(2.8rem,4.5vw,5rem)]"
+              style={{ color: "var(--text)", animationDelay: "0.35s" }}
             >
               Happy{" "}
               <span className="gradient-text">23rd</span>
               <br />Birthday,
               <br />Burhanuddin
-            </motion.h1>
+            </h1>
 
             <motion.p
               initial={{ opacity: 0, y: 14 }}
@@ -254,8 +250,9 @@ export default function Hero({ onCTAClick }: Props) {
           </div>
         </div>
 
-        {/* Right column — portrait photo */}
-        <div className="relative overflow-hidden">
+        {/* Right column — portrait photo with parallax */}
+        <div ref={photoColRef} className="relative overflow-hidden">
+          <motion.div className="absolute inset-0" style={{ y: photoY }}>
           {/* Thin gold accent bar */}
           <div
             className="absolute left-0 top-0 bottom-0 w-[3px] z-10"
@@ -299,6 +296,7 @@ export default function Hero({ onCTAClick }: Props) {
           >
             <p className="font-display text-2xl font-black" style={{ color: "#d4af37" }}>23</p>
             <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: "var(--muted)" }}>Years</p>
+          </motion.div>
           </motion.div>
         </div>
       </div>

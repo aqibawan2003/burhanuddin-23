@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Plus_Jakarta_Sans, Caveat } from "next/font/google";
+import { Cormorant_Garamond, Inter, Caveat } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
-  variable: "--font-playfair",
+  weight: ["600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-playfair", // keep same CSS var name so all components work
   display: "swap",
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
-  variable: "--font-jakarta",
+  variable: "--font-jakarta", // keep same CSS var name
   display: "swap",
 });
 
@@ -25,11 +26,9 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
   title: "Happy 23rd Birthday, Burhanuddin",
-  description: "A cinematic birthday tribute for someone who makes every room brighter — here's to 23 incredible years.",
-  robots: {
-    index: false,
-    follow: false,
-  },
+  description:
+    "A cinematic birthday tribute for someone who makes every room brighter — here's to 23 incredible years.",
+  robots: { index: false, follow: false },
   openGraph: {
     title: "Happy 23rd Birthday, Burhanuddin",
     description: "A cinematic birthday tribute for someone who makes every room brighter.",
@@ -42,16 +41,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${jakarta.variable} ${caveat.variable}`}>
-      <body className="font-body">
-        {children}
-      </body>
+    <html lang="en" className={`${cormorant.variable} ${inter.variable} ${caveat.variable}`}>
+      <body className="font-body">{children}</body>
     </html>
   );
 }

@@ -80,10 +80,12 @@ export default function MusicToggle({ started }: Props) {
   }, []);
 
   const startAudio = useCallback(() => {
-    if (ctxRef.current) return; // already running
+    if (ctxRef.current) return;
     const ctx = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
     const master = ctx.createGain();
-    master.gain.value = 0.28;
+    // Fade in from silence over 2 seconds
+    master.gain.setValueAtTime(0, ctx.currentTime);
+    master.gain.linearRampToValueAtTime(0.28, ctx.currentTime + 2);
     master.connect(ctx.destination);
     ctxRef.current = ctx;
     gainRef.current = master;
@@ -124,14 +126,36 @@ export default function MusicToggle({ started }: Props) {
     localStorage.setItem("music_muted", String(next));
   };
 
+  const DELAYS = ["0s", "0.15s", "0.3s", "0.1s", "0.25s"];
+
   return (
     <button
       onClick={toggle}
-      className="fixed bottom-6 right-6 z-50 w-11 h-11 rounded-full flex items-center justify-center glass"
-      style={{ border: "1px solid var(--border)", boxShadow: playing && !muted ? "0 0 16px rgba(212,175,55,0.35)" : "none" }}
+      className="fixed bottom-6 right-6 z-50 rounded-full flex items-center gap-2 px-3 h-11 glass"
+      style={{
+        border: "1px solid var(--border)",
+        boxShadow: playing && !muted ? "0 0 18px rgba(212,175,55,0.35)" : "none",
+      }}
       aria-label={muted ? "Unmute music" : "Mute music"}
       title={muted ? "Unmute music" : "Mute music"}
     >
+      {/* Visualizer bars — only visible when playing */}
+      {playing && !muted && (
+        <span className="flex items-end gap-[2px] h-5" aria-hidden="true">
+          {DELAYS.map((d, i) => (
+            <span
+              key={i}
+              className="viz-bar"
+              style={{
+                height: "16px",
+                animationDelay: d,
+                animationDuration: `${0.7 + i * 0.08}s`,
+              }}
+            />
+          ))}
+        </span>
+      )}
+
       {muted ? (
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: "var(--muted)" }}>
           <path d="M11 5L6 9H2v6h4l5 4V5z" />

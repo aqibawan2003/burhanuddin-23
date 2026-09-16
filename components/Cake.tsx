@@ -9,6 +9,7 @@ const CANDLE_COUNT = 23;
 export default function Cake() {
   const [blown, setBlown] = useState<boolean[]>(Array(CANDLE_COUNT).fill(false));
   const [showModal, setShowModal] = useState(false);
+  const [dimming, setDimming] = useState(false);
   const confettiRef = useRef<(() => void) | null>(null);
   const blowingRef = useRef(false);
 
@@ -32,20 +33,26 @@ export default function Cake() {
       );
     }
 
-    // Show celebration
+    // Dim screen briefly, then explode confetti
     setTimeout(async () => {
+      setDimming(true);
+      await new Promise<void>((r) => setTimeout(r, 700));
+      setDimming(false);
       setShowModal(true);
-      // Lazy-load and fire confetti
+
       if (!confettiRef.current) {
         const mod = await import("canvas-confetti");
-        const confetti = mod.default;
+        const fire = mod.default;
         confettiRef.current = () => {
-          confetti({
-            particleCount: 180,
-            spread: 80,
-            origin: { y: 0.6 },
-            colors: ["#e9c46a", "#f4a261", "#e76f51", "#fff", "#ffd6a5"],
-          });
+          const colors = ["#d4af37", "#f4a261", "#fde68a", "#fff", "#c8973a", "#ffb347"];
+          // Centre burst
+          fire({ particleCount: 160, spread: 90, origin: { x: 0.5, y: 0.55 }, colors });
+          // Left cannon
+          setTimeout(() => fire({ particleCount: 80, angle: 60, spread: 55, origin: { x: 0, y: 0.6 }, colors }), 150);
+          // Right cannon
+          setTimeout(() => fire({ particleCount: 80, angle: 120, spread: 55, origin: { x: 1, y: 0.6 }, colors }), 300);
+          // Upward drift
+          setTimeout(() => fire({ particleCount: 60, spread: 120, startVelocity: 20, gravity: 0.4, origin: { x: 0.5, y: 0.7 }, colors }), 500);
         };
       }
       confettiRef.current();
@@ -70,6 +77,22 @@ export default function Cake() {
   });
 
   return (
+    <>
+    {/* Screen dim overlay */}
+    <AnimatePresence>
+      {dimming && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.85 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="fixed inset-0 z-[80]"
+          style={{ background: "#0a0806" }}
+          aria-hidden="true"
+        />
+      )}
+    </AnimatePresence>
+
     <section id="cake" className="section" aria-label="Birthday cake interaction">
       <SectionHeading eyebrow="Make a Wish" title="Blow the Candles" />
 
@@ -217,5 +240,6 @@ export default function Cake() {
         )}
       </AnimatePresence>
     </section>
+    </>
   );
 }

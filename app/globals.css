@@ -280,6 +280,75 @@ body::before {
 }
 
 /* ============================================================
+   AURORA ORBS — floating colour blobs (desktop hero)
+   ============================================================ */
+@keyframes orb-float-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(3%, -4%) scale(1.05); }
+  66%       { transform: translate(-2%, 3%) scale(0.97); }
+}
+@keyframes orb-float-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(-4%, 3%) scale(1.08); }
+  75%       { transform: translate(2%, -2%) scale(0.95); }
+}
+@keyframes orb-float-c {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(4%, 4%) scale(1.06); }
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+.orb-a {
+  width: 340px; height: 340px;
+  background: rgba(212, 175, 55, 0.18);
+  top: -10%; left: -8%;
+  animation: orb-float-a 18s ease-in-out infinite;
+}
+.orb-b {
+  width: 260px; height: 260px;
+  background: rgba(244, 162, 97, 0.13);
+  bottom: 5%; right: 5%;
+  animation: orb-float-b 22s ease-in-out infinite;
+}
+.orb-c {
+  width: 200px; height: 200px;
+  background: rgba(255, 220, 180, 0.1);
+  top: 50%; left: 55%;
+  animation: orb-float-c 16s ease-in-out infinite;
+}
+
+/* ============================================================
+   BLUR REVEAL — hero headline sharpens into focus
+   ============================================================ */
+@keyframes blur-reveal {
+  from { filter: blur(10px); opacity: 0; transform: translateY(14px); }
+  to   { filter: blur(0);    opacity: 1; transform: translateY(0); }
+}
+.blur-reveal {
+  animation: blur-reveal 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ============================================================
+   MUSIC VISUALIZER BARS
+   ============================================================ */
+@keyframes bar-bounce {
+  0%, 100% { transform: scaleY(0.3); }
+  50%       { transform: scaleY(1); }
+}
+.viz-bar {
+  width: 3px;
+  border-radius: 2px;
+  transform-origin: bottom;
+  background: var(--accent);
+  animation: bar-bounce 0.8s ease-in-out infinite;
+}
+
+/* ============================================================
    SECTION DIVIDER — thin gold gradient line
    ============================================================ */
 .section-divider {
