@@ -23,8 +23,7 @@ export default function SectionHeading({ eyebrow, title, className = "" }: Props
         </p>
       )}
       <h2
-        className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-        style={{ color: "var(--text)" }}
+        className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight gradient-text"
       >
         {title}
       </h2>

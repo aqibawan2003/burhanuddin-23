@@ -40,8 +40,7 @@ export default function Timeline() {
                   `}
                 >
                   <div
-                    className="px-5 py-4 rounded-2xl"
-                    style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
+                    className="card-glass card-shine card-border-hover px-5 py-4 rounded-2xl"
                   >
                     <span
                       className="font-display text-2xl font-bold block mb-1"

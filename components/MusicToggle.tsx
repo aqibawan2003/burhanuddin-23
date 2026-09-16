@@ -14,9 +14,11 @@ export default function MusicToggle({ started }: Props) {
   });
 
   useEffect(() => {
-    const audio = new Audio("/audio/birthday.mp3");
+    const audio = new Audio("/audio/happy-birthday.mp3");
     audio.loop = true;
-    audio.volume = 0.35;
+    audio.volume = 0.3;
+    // Silently swallow 404 / missing file — no console errors
+    audio.addEventListener("error", () => { /* file not present, fail silently */ });
     audioRef.current = audio;
     return () => { audio.pause(); audio.src = ""; };
   }, []);

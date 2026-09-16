@@ -18,7 +18,7 @@ export default function Wishes() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, delay: i * 0.07 }}
             whileHover={{ y: -4 }}
-            className="spotlight-card card-border-hover p-6 rounded-2xl flex flex-col gap-3"
+            className="spotlight-card card-glass card-shine card-border-hover p-6 rounded-2xl flex flex-col gap-3"
             style={{
               background: "var(--surface)",
             }}

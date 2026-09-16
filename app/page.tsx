@@ -8,8 +8,10 @@ import Gallery from "@/components/Gallery";
 import Timeline from "@/components/Timeline";
 import Letter from "@/components/Letter";
 import Cake from "@/components/Cake";
-import Wishes from "@/components/Wishes";
 import WorkExperience from "@/components/WorkExperience";
+import Wishes from "@/components/Wishes";
+import Stats from "@/components/Stats";
+import SectionDivider from "@/components/SectionDivider";
 import Footer from "@/components/Footer";
 import MusicToggle from "@/components/MusicToggle";
 import StickyCTA from "@/components/StickyCTA";
@@ -19,15 +21,13 @@ export default function Home() {
 
   const handleCTA = useCallback(async () => {
     setMusicStarted(true);
-    // Fire confetti on CTA click
     const { default: confetti } = await import("canvas-confetti");
     confetti({
-      particleCount: 120,
-      spread: 70,
+      particleCount: 130,
+      spread: 72,
       origin: { y: 0.6 },
-      colors: ["#e9c46a", "#f4a261", "#e76f51", "#fff"],
+      colors: ["#d4af37", "#f4a261", "#fde68a", "#fff", "#c8973a"],
     });
-    // Smooth scroll to gallery
     document.getElementById("gallery")?.scrollIntoView({ behavior: "smooth" });
   }, []);
 
@@ -36,13 +36,37 @@ export default function Home() {
       <Nav />
       <Hero onCTAClick={handleCTA} />
       <Countdown />
+
+      <SectionDivider />
       <Gallery />
-      <Timeline />
+
+      <SectionDivider />
+      <div className="section-warm">
+        <Timeline />
+      </div>
+
+      <SectionDivider />
+      <Stats />
+
+      <SectionDivider />
       <Letter />
-      <Cake />
+
+      <SectionDivider />
+      <div className="section-warm">
+        <Cake />
+      </div>
+
+      <SectionDivider />
       <WorkExperience />
-      <Wishes />
+
+      <SectionDivider />
+      <div className="section-warm">
+        <Wishes />
+      </div>
+
+      <SectionDivider />
       <Footer />
+
       <MusicToggle started={musicStarted} />
       <StickyCTA onCTAClick={handleCTA} />
     </main>
