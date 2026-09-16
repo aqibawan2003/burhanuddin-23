@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 /* ============================================================
-   GOLDEN HOUR ELEGANCE — CSS Variables
+   WARM CREAM & GOLD — CSS Variables
    ============================================================ */
 :root {
-  --bg: #fff9f4;
-  --surface: #fffdf9;
-  --surface-2: #f7ede8;
-  --text: #17131b;
-  --muted: #6d4a43;
+  --bg: #fdfbf7;
+  --surface: #ffffff;
+  --surface-2: #f5f0e8;
+  --text: #1a1a1a;
+  --muted: #6b6b6b;
   --accent: #d4af37;
-  --accent-2: #a65c74;
+  --accent-2: #8b4513;
   --accent-3: #c0392b;
-  --border: rgba(212, 175, 55, 0.22);
-  --glass: rgba(255, 253, 249, 0.88);
-  --grain-opacity: 0.022;
+  --border: rgba(212, 175, 55, 0.2);
+  --glass: rgba(255, 255, 255, 0.88);
+  --grain-opacity: 0.018;
   --radius: 1rem;
   --radius-lg: 1.5rem;
-  --shadow: 0 2px 18px rgba(23, 19, 27, 0.07);
-  --shadow-lg: 0 8px 44px rgba(23, 19, 27, 0.1);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.08);
 }
 
 /* ============================================================
@@ -36,12 +36,6 @@ html {
 
 body {
   background-color: var(--bg);
-  /* Golden Hour atmospheric gradient — blush & lilac glows */
-  background-image:
-    radial-gradient(circle at 8% 4%, rgba(247, 220, 227, 0.68), transparent 31%),
-    radial-gradient(circle at 92% 7%, rgba(233, 221, 245, 0.62), transparent 32%),
-    linear-gradient(180deg, #fff9f4 0%, #fbf0f3 48%, #fff9f4 100%);
-  background-attachment: fixed;
   color: var(--text);
   min-height: 100dvh;
   overflow-x: hidden;
@@ -163,11 +157,11 @@ body::before {
 .aurora-bg {
   background: linear-gradient(
     -45deg,
-    #fff9f4,
-    #fdf0f5,
-    #fef4e6,
-    #fdf3f8,
-    #fff9f4
+    #fdfbf7,
+    #fef9ed,
+    #fff4d6,
+    #fdfbf7,
+    #f9f0e0
   );
   background-size: 400% 400%;
   animation: aurora-drift 14s ease infinite;
@@ -184,11 +178,11 @@ body::before {
 .shimmer-eyebrow {
   background: linear-gradient(
     90deg,
-    #a65c74 0%,
+    #c8973a 0%,
     #d4af37 30%,
-    #f7dcde 50%,
+    #fde68a 50%,
     #d4af37 70%,
-    #a65c74 100%
+    #c8973a 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -310,20 +304,20 @@ body::before {
   pointer-events: none;
 }
 .orb-a {
-  width: 360px; height: 360px;
-  background: rgba(247, 220, 227, 0.55);   /* blush pink */
+  width: 340px; height: 340px;
+  background: rgba(212, 175, 55, 0.14);
   top: -10%; left: -8%;
   animation: orb-float-a 18s ease-in-out infinite;
 }
 .orb-b {
-  width: 280px; height: 280px;
-  background: rgba(233, 221, 245, 0.45);   /* soft lilac */
+  width: 260px; height: 260px;
+  background: rgba(244, 162, 97, 0.10);
   bottom: 5%; right: 5%;
   animation: orb-float-b 22s ease-in-out infinite;
 }
 .orb-c {
-  width: 220px; height: 220px;
-  background: rgba(212, 175, 55, 0.12);  /* gold centre */
+  width: 200px; height: 200px;
+  background: rgba(255, 220, 160, 0.08);
   top: 50%; left: 55%;
   animation: orb-float-c 16s ease-in-out infinite;
 }
@@ -376,7 +370,7 @@ body::before {
    ALTERNATING SECTION BACKGROUND
    ============================================================ */
 .section-warm {
-  background: linear-gradient(180deg, #fff9f4 0%, #fbf0f3 50%, #fff9f4 100%);
+  background: linear-gradient(180deg, #fdfbf7 0%, #faf4e8 50%, #fdfbf7 100%);
 }
 
 /* ============================================================

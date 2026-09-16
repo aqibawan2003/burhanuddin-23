@@ -14,7 +14,7 @@ export default function Letter() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="max-w-2xl mx-auto"
+        className="max-w-3xl mx-auto"
       >
         <div
           className="relative p-8 md:p-12 rounded-3xl"
@@ -44,7 +44,7 @@ export default function Letter() {
             {site.letter.body.map((para, i) => (
               <p
                 key={i}
-                className="text-base leading-[1.85] font-body"
+                className="text-lg leading-[1.85] font-body"
                 style={{ color: "var(--muted)" }}
               >
                 {para}

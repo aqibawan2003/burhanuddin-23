@@ -10,7 +10,6 @@ import Letter from "@/components/Letter";
 import Cake from "@/components/Cake";
 import WorkExperience from "@/components/WorkExperience";
 import Wishes from "@/components/Wishes";
-import Stats from "@/components/Stats";
 import Guestbook from "@/components/Guestbook";
 import SectionDivider from "@/components/SectionDivider";
 import Footer from "@/components/Footer";
@@ -45,9 +44,6 @@ export default function Home() {
       <div className="section-warm">
         <Timeline />
       </div>
-
-      <SectionDivider />
-      <Stats />
 
       <SectionDivider />
       <Letter />
